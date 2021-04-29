@@ -11,7 +11,6 @@ namespace real_estate_market.Models
         [Required]
         public int Level { get; set; }
         [Required]
-        [MaxLength(255)]
         public string Address { get; set; }
         public Cladding Cladding { get; set; }
         public int CladdingId { get; set; }

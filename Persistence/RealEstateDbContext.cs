@@ -10,5 +10,6 @@ namespace real_estate_market.Persistence
 
         }
         public DbSet<RealEstate> RealEstates { get; set; }
+        public DbSet<Cladding> Claddings { get; set; }
     }
 }
