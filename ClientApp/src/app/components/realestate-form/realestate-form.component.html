@@ -1,0 +1,30 @@
+<h1>New Real Estate</h1>
+<form>
+  <div class="form-group">
+    <label for="cladding">Cladding</label>
+    <select id="cladding" class="form-control" type="number">
+      <option value=""></option>
+      <option *ngFor="let r of realestates" value="{{ r.id }}">{{ r.name }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="area">Area</label>
+    <input id="area" class="form-control" type="number">
+  </div>
+  <div class="form-group">
+    <label for="level">Level</label>
+    <input id="level" type="number" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input id="address" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="numberofrooms">Number of Rooms</label>
+    <input id="numberofrooms" type="number" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input id="price" type="number" class="form-control">
+  </div>
+</form>
