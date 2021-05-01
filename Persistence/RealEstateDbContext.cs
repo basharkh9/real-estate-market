@@ -10,5 +10,10 @@ namespace real_estate_market.Persistence
 
         }
         public DbSet<RealEstate> RealEstates { get; set; }
+        public DbSet<Cladding> Claddings { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+
     }
 }
