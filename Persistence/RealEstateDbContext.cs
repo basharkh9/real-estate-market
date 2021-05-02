@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using real_estate_market.Models;
+using real_estate_market.Core.Models;
 
 namespace real_estate_market.Persistence
 {

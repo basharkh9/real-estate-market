@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace real_estate_market.Models
+namespace real_estate_market.Core.Models
 {
     [Table("Claddings")]
     public class Cladding

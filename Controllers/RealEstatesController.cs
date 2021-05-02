@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using real_estate_market.Controllers.Resources;
-using real_estate_market.Models;
-using real_estate_market.Persistence;
+using real_estate_market.Core;
+using real_estate_market.Core.Models;
 
 namespace real_estate_market.Controllers
 {
@@ -12,43 +12,46 @@ namespace real_estate_market.Controllers
     public class RealEstatesController : Controller
     {
         private readonly IMapper mapper;
-        private readonly RealEstateDbContext context;
-        public RealEstatesController(RealEstateDbContext context, IMapper mapper)
+        private readonly IRealEstateRepository repository;
+        private readonly IUnitOfWork unitOfWork;
+        public RealEstatesController(IMapper mapper, IRealEstateRepository realEstateRepository, IUnitOfWork unitOfWork)
         {
-            this.context = context;
+            this.unitOfWork = unitOfWork;
+            this.repository = realEstateRepository;
             this.mapper = mapper;
 
         }
         [HttpPost]
-        public async Task<IActionResult> CreateRealEstate([FromBody] RealEstateResource realEstateResource)
+        public async Task<IActionResult> CreateRealEstate([FromBody] SaveRealEstateResource realEstateResource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var realEstate = mapper.Map<RealEstateResource, RealEstate>(realEstateResource);
+            var realEstate = mapper.Map<SaveRealEstateResource, RealEstate>(realEstateResource);
 
-            context.RealEstates.Add(realEstate);
-            await context.SaveChangesAsync();
+            repository.Add(realEstate);
+            await unitOfWork.CompleteAsync();
 
             var result = mapper.Map<RealEstate, RealEstateResource>(realEstate);
 
             return Ok(result);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRealEstate(int id, [FromBody] RealEstateResource realEstateResource)
+        public async Task<IActionResult> UpdateRealEstate(int id, [FromBody] SaveRealEstateResource realEstateResource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var realEstate = await context.RealEstates.FindAsync(id);
+            var realEstate = await repository.GetRealEstate(id);
 
             if (realEstate == null)
                 return NotFound();
 
-            mapper.Map<RealEstateResource, RealEstate>(realEstateResource, realEstate);
+            mapper.Map<SaveRealEstateResource, RealEstate>(realEstateResource, realEstate);
 
-            await context.SaveChangesAsync();
+            await unitOfWork.CompleteAsync();
 
+            realEstate = await repository.GetRealEstate(realEstate.Id);
             var result = mapper.Map<RealEstate, RealEstateResource>(realEstate);
 
             return Ok(result);
@@ -56,20 +59,20 @@ namespace real_estate_market.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRealEstate(int id)
         {
-            var realEstate = await context.RealEstates.FindAsync(id);
+            var realEstate = await repository.GetRealEstate(id, false);
 
             if (realEstate == null)
                 return NotFound();
 
-            context.Remove(realEstate);
-            await context.SaveChangesAsync();
+            repository.Remove(realEstate);
+            await unitOfWork.CompleteAsync();
 
             return Ok(id);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRealEstate(int id)
         {
-            var realEstate = await context.RealEstates.Include(r => r.Cladding).SingleOrDefaultAsync(r => r.Id == id);
+            var realEstate = await repository.GetRealEstate(id);
 
             if (realEstate == null)
                 return NotFound();
@@ -77,6 +80,14 @@ namespace real_estate_market.Controllers
             var realEstateResource = mapper.Map<RealEstate, RealEstateResource>(realEstate);
 
             return Ok(realEstateResource);
+        }
+        [HttpGet]
+        public async Task<IEnumerable<RealEstateResource>> GetRealEstates()
+        {
+            var realEstates = await repository.GetRealEstates();
+
+            return mapper.Map<IEnumerable<RealEstate>, IEnumerable<RealEstateResource>>(realEstates);
+
         }
     }
 }

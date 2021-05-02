@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace real_estate_market.Models
+namespace real_estate_market.Core.Models
 {
     [Table("Feedbacks")]
     public class Feedback

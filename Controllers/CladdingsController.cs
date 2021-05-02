@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using real_estate_market.Controllers.Resources;
-using real_estate_market.Models;
+using real_estate_market.Core.Models;
 using real_estate_market.Persistence;
 
 namespace real_estate_market.Controllers
