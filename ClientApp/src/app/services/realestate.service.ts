@@ -4,11 +4,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RealestateService {
+export class CladdingService {
 
   constructor(private http: HttpClient) { }
 
-  getRealEstate() {
-    return this.http.get('/api/realestates/cladding');
+  getCladdings() {
+    return this.http.get('/api/claddings');
   }
 }

@@ -1,10 +1,13 @@
 <h1>New Real Estate</h1>
+<p>
+  {{ claddings | json }}
+</p>
 <form>
   <div class="form-group">
     <label for="cladding">Cladding</label>
     <select id="cladding" class="form-control" type="number">
       <option value=""></option>
-      <option *ngFor="let r of realestates" value="{{ r.id }}">{{ r.name }}</option>
+      <option *ngFor="let r of claddings" value="{{ r.id }}">{{ r.name }}</option>
     </select>
   </div>
   <div class="form-group">

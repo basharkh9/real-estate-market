@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RealestateService } from 'src/app/services/realestate.service';
+import { CladdingService } from 'src/app/services/realestate.service';
 
 @Component({
   selector: 'app-realestate-form',
@@ -7,13 +7,14 @@ import { RealestateService } from 'src/app/services/realestate.service';
   styleUrls: ['./realestate-form.component.css']
 })
 export class RealestateFormComponent implements OnInit {
-  realestates;
+  claddings;
+  realestate: {};
 
-  constructor(private realestateService: RealestateService) { }
+  constructor(private claddingService: CladdingService) { }
 
   ngOnInit(): void {
-    this.realestateService.getRealEstate().subscribe(realestate => {
-      this.realestates =realestate; 
+    this.claddingService.getCladdings().subscribe(cladding => {
+      this.claddings = cladding; 
     });
   }
 

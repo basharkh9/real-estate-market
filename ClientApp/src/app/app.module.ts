@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { RealestateFormComponent } from './components/realestate-form/realestate-form.component';
-import { RealestateService } from './services/realestate.service';
+import { CladdingService } from './services/realestate.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { RealestateService } from './services/realestate.service';
     ], { relativeLinkResolution: 'legacy' })
   ],
   providers: [
-    RealestateService
+    CladdingService
   ],
   bootstrap: [AppComponent]
 })
