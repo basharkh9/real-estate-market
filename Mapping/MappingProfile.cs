@@ -1,6 +1,6 @@
 using AutoMapper;
 using real_estate_market.Controllers.Resources;
-using real_estate_market.Models;
+using real_estate_market.Core.Models;
 
 namespace real_estate_market.Mapping
 {
@@ -10,10 +10,11 @@ namespace real_estate_market.Mapping
         {
             // Domain to API Resource
             CreateMap<Cladding, CladdingResource>();
+            CreateMap<RealEstate, SaveRealEstateResource>();
             CreateMap<RealEstate, RealEstateResource>();
 
             // API Resource to Domain
-            CreateMap<RealEstateResource, RealEstate>()
+            CreateMap<SaveRealEstateResource, RealEstate>()
                 .ForMember(r => r.Id, opt => opt.Ignore());
         }
     }
