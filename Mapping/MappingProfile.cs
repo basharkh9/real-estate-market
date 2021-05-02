@@ -8,8 +8,13 @@ namespace real_estate_market.Mapping
     {
         public MappingProfile()
         {
+            // Domain to API Resource
             CreateMap<Cladding, CladdingResource>();
             CreateMap<RealEstate, RealEstateResource>();
+
+            // API Resource to Domain
+            CreateMap<RealEstateResource, RealEstate>()
+                .ForMember(r => r.Id, opt => opt.Ignore());
         }
     }
 }

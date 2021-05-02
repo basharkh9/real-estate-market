@@ -9,16 +9,16 @@ using real_estate_market.Persistence;
 
 namespace real_estate_market.Controllers
 {
-    public class RealEstatesController : Controller
+    public class CladdingsController : Controller
     {
         private readonly RealEstateDbContext context;
         private readonly IMapper mapper;
-        public RealEstatesController(RealEstateDbContext context, IMapper mapper)
+        public CladdingsController(RealEstateDbContext context, IMapper mapper)
         {
             this.mapper = mapper;
             this.context = context;
         }
-        [HttpGet("/api/realestates/cladding")]
+        [HttpGet("/api/claddings")]
         public async Task<IEnumerable<CladdingResource>> GetCladdings()
         {
             var claddings = await context.Claddings.Include(r => r.RealEstates).ToListAsync();
