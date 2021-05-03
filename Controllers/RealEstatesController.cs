@@ -77,7 +77,7 @@ namespace real_estate_market.Controllers
             if (realEstate == null)
                 return NotFound();
 
-            var realEstateResource = mapper.Map<RealEstate, RealEstateResource>(realEstate);
+            var realEstateResource = mapper.Map<RealEstate, SaveRealEstateResource>(realEstate);
 
             return Ok(realEstateResource);
         }

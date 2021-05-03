@@ -1,33 +1,36 @@
 <h1>New Real Estate</h1>
 <p>
-  {{ claddings | json }}
+  {{ realestate | json }}
 </p>
-<form>
+<form #f="ngForm" (ngSubmit)="submit()" novalidate>
   <div class="form-group">
     <label for="cladding">Cladding</label>
-    <select id="cladding" class="form-control" type="number">
+    <select id="cladding" class="form-control" [(ngModel)]="realestate.claddingId" name="claddingId" required #cladding="ngModel">
       <option value=""></option>
-      <option *ngFor="let r of claddings" value="{{ r.id }}">{{ r.name }}</option>
+      <option *ngFor="let c of claddings" value="{{ c.id }}">{{ c.name }}</option>
     </select>
+    <div class="alert alert-danger" *ngIf="cladding.touched && !cladding.valid" >Please specify the cladding</div>
   </div>
   <div class="form-group">
     <label for="area">Area</label>
-    <input id="area" class="form-control" type="number">
+    <input [(ngModel)]="realestate.area" name="area" id="area" class="form-control" type="number">
   </div>
   <div class="form-group">
     <label for="level">Level</label>
-    <input id="level" type="number" class="form-control">
+    <input [(ngModel)]="realestate.level" name="level" id="level" type="number" class="form-control">
   </div>
   <div class="form-group">
     <label for="address">Address</label>
-    <input id="address" type="text" class="form-control">
+    <input [(ngModel)]="realestate.address" name="address" id="address" type="text" class="form-control">
   </div>
   <div class="form-group">
     <label for="numberofrooms">Number of Rooms</label>
-    <input id="numberofrooms" type="number" class="form-control">
+    <input [(ngModel)]="realestate.numberofroom" name="numberofroom" id="numberofrooms" type="number" class="form-control">
   </div>
   <div class="form-group">
     <label for="price">Price</label>
-    <input id="price" type="number" class="form-control">
+    <input [(ngModel)]="realestate.price" name="price" id="price" type="number" class="form-control">
   </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
+  <button *ngIf="realestate.id" class="btn btn-danger" type="button" (click)="delete()">Delete</button>
 </form>
