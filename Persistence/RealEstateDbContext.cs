@@ -14,6 +14,7 @@ namespace real_estate_market.Persistence
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
     }
 }

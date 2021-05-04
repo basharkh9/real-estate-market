@@ -22,7 +22,7 @@ namespace real_estate_market.Persistence
             if (!includeRelated)
                 return await context.RealEstates.FindAsync(id);
 
-            return await context.RealEstates.Include(r => r.Cladding).SingleOrDefaultAsync(r => r.Id == id);
+            return await context.RealEstates.Include(r => r.Cladding).Include(r => r.Photos).SingleOrDefaultAsync(r => r.Id == id);
         }
         public void Add(RealEstate realEstate)
         {

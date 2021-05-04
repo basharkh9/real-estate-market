@@ -9,6 +9,7 @@ namespace real_estate_market.Mapping
         public MappingProfile()
         {
             // Domain to API Resource
+            CreateMap<Photo, PhotoResource>();
             CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<Cladding, CladdingResource>();
             CreateMap<RealEstate, SaveRealEstateResource>();
