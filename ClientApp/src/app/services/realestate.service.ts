@@ -12,8 +12,8 @@ export class RealEstateService {
     return this.http.get('/api/claddings');
   }
 
-  getRealEstates() {
-    return this.http.get('/api/realestates');
+  getRealEstates(filter) {
+    return this.http.get('/api/realestates' + '?' + this.toQueryString(filter));
   }
 
   create(realestate) {
@@ -31,5 +31,16 @@ export class RealEstateService {
 
   delete(id) {
     return this.http.delete('/api/realestates/' + id);
+  }
+
+  toQueryString(obj) {
+    var parts = [];
+    for (var property in obj) {
+      var value = obj[property];
+      if (value != null && value != undefined) 
+        parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
+    }
+
+    return parts.join('&');
   }
 }

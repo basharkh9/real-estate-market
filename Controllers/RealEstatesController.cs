@@ -82,11 +82,12 @@ namespace real_estate_market.Controllers
             return Ok(realEstateResource);
         }
         [HttpGet]
-        public async Task<IEnumerable<RealEstateResource>> GetRealEstates()
+        public async Task<QueryResultResource<RealEstateResource>> GetRealEstates(RealEstateQueryResource filterResource)
         {
-            var realEstates = await repository.GetRealEstates();
+            var filter = mapper.Map<RealEstateQueryResource, RealEstateQuery>(filterResource);
+            var queryResult = await repository.GetRealEstates(filter);
 
-            return mapper.Map<IEnumerable<RealEstate>, IEnumerable<RealEstateResource>>(realEstates);
+            return mapper.Map<QueryResult<RealEstate>, QueryResultResource<RealEstateResource>>(queryResult);
 
         }
     }
