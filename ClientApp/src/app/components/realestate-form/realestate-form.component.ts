@@ -28,7 +28,7 @@ export class RealestateFormComponent implements OnInit {
     private realestateService: RealEstateService,
     private toastyService: ToastyService) {
       route.params.subscribe(p =>{
-        this.realestate.id = +p['id'];
+        this.realestate.id = +p['id'] || 0;
       });
     }
   ngOnInit(): void {

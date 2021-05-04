@@ -1,3 +1,4 @@
+import { PhotoService } from './services/photo.service';
 import { PaginationComponent } from './components/shared/pagination.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { FetchDataComponent } from './components/fetch-data/fetch-data.component
 import { RealestateFormComponent } from './components/realestate-form/realestate-form.component';
 import { RealEstateService } from './services/realestate.service';
 import { RealestateListComponent } from './components/realestate-list/realestate-list.component';
+import { ViewRealestateComponent } from './components/view-realestate/view-realestate.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { RealestateListComponent } from './components/realestate-list/realestate
     FetchDataComponent,
     PaginationComponent,
     RealestateFormComponent,
-    RealestateListComponent
+    RealestateListComponent,
+    ViewRealestateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,12 +39,14 @@ import { RealestateListComponent } from './components/realestate-list/realestate
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'realestates/new', component: RealestateFormComponent },
-      { path: 'realestates/:id', component: RealestateFormComponent },
+      { path: 'realestates/edit/:id', component: RealestateFormComponent },
+      { path: 'realestates/:id', component: ViewRealestateComponent },
       { path: 'realestates', component: RealestateListComponent },
     ], { relativeLinkResolution: 'legacy' })
   ],
   providers: [
-    RealEstateService
+    RealEstateService,
+    PhotoService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using real_estate_market.Controllers;
 using real_estate_market.Core;
+using real_estate_market.Core.Models;
 using real_estate_market.Persistence;
 
 namespace real_estate_market
@@ -24,12 +26,20 @@ namespace real_estate_market
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
+
             services.AddScoped<IRealEstateRepository, RealEstateRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IPhotoService, PhotoService>();
+            services.AddTransient<IPhotoStorage, FileSystemPhotoStorage>();
 
             services.AddAutoMapper();
 
             services.AddDbContext<RealEstateDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            // services.AddAuthorization(options => {
+            //     options.AddPolicy(Policies.RequireAdminRole, policy => policy.RequireClaim("https://vega.com/roles", "Admin"));
+            // });
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

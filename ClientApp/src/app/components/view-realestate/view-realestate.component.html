@@ -1,0 +1,40 @@
+<h1>RealEstate</h1>
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">RealEstate</a></li>
+    <li role="presentation"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content" *ngIf="realEstate">
+    <!-- RealEstate tab -->
+    <div role="tabpanel" class="tab-pane active" id="basic">
+      <h2>Basics</h2>
+      <ul>
+        <li>cladding: {{ realEstate.claddingId }}</li>
+        <li>level: {{ realEstate.level }}</li>
+      </ul>
+      <br/>
+      <p>
+        <a class="btn btn-primary" [routerLink]="['/realestates/edit/', realEstate.id]">Edit</a>
+        <button class="btn btn-danger" (click)="delete()">Delete</button>
+        <a class="btn btn-default" [routerLink]="['/realestates']">View All RealEstate</a>
+      </p>
+    </div>
+    <!-- Photos tab -->
+    <div role="tabpanel" class="tab-pane" id="photos">
+      <h2>Photos</h2>
+      <input type="file" (change)="uploadPhoto()" #fileInput> 
+      <div class="progress" *ngIf="progress && progress.percentage < 100">
+        <div class="progress-bar" [style.width]="progress.percentage + '%'">
+          <span class="sr-only">{{ progress.percentage }}% Complete</span>
+        </div>
+      </div>
+      <img *ngFor="let photo of photos" src="/uploads/{{ photo.fileName }}" class="img-thumbnail">
+    </div>
+  </div>
+</div>
+
+
