@@ -1,51 +1,37 @@
-<header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Real Estate Market</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/realestates/new']">New</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li>
-        </ul>
+<div class='main-nav'>
+  <div class='navbar navbar-inverse navbar-static-top'>
+      <div class='navbar-header'>
+          <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+              <span class='sr-only'>Toggle navigation</span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' [routerLink]="['/']" >RealEstate</a>
       </div>
-    </div>
-  </nav>
-</header>
+      <div class='navbar-collapse collapse'>
+          <ul class='nav navbar-nav navbar-right'>
+              <li [routerLinkActive]="['link-active']"  [routerLinkActiveOptions]="{exact: true}">
+                  <a [routerLink]="['/realestates']">
+                      <span class='glyphicon glyphicon-home'></span> Realestates
+                  </a>
+              </li>
+              <li [routerLinkActive]="['link-active']">
+                  <a [routerLink]="['/realestates/new']">
+                      <span class='glyphicon glyphicon-plus'></span> New Realestate
+                  </a>
+              </li>
+              <li [routerLinkActive]="['link-active']">
+                  <a [routerLink]="['/counter']">
+                      <span class='glyphicon glyphicon-education'></span> Counter
+                  </a>
+              </li>
+              <li [routerLinkActive]="['link-active']">
+                  <a [routerLink]="['/fetch-data']">
+                      <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</div>

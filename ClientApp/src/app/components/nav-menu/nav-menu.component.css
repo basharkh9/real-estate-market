@@ -1,9 +1,3 @@
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
 html {
   font-size: 14px;
 }
@@ -14,5 +8,25 @@ html {
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
+li .glyphicon {
+  margin-right: 10px;
+}
+
+/* Highlighting rules for nav menu items */
+li.link-active a,
+li.link-active a:hover,
+li.link-active a:focus {
+  background-color: #4189c7;
+  color: white;
+}
+
+/* Keep the nav menu independent of scrolling and on top of other items
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+} */
