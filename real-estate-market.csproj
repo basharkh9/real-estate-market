@@ -18,6 +18,7 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <RootNamespace>real_estate_market</RootNamespace>
+    <UserSecretsId>3ae3eec2-ed1d-4c70-b6b4-167d8ac4aa70</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

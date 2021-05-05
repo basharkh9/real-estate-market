@@ -1,7 +1,6 @@
 import { SaveRealEstate } from './../../models/realestate';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastyService } from 'ng2-toasty';
 import { RealEstateService } from 'src/app/services/realestate.service';
 
 @Component({
@@ -26,8 +25,7 @@ export class RealestateFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
-    private realestateService: RealEstateService,
-    private toastyService: ToastyService) {
+    private realestateService: RealEstateService) {
       route.params.subscribe(p =>{
         this.realestate.id = +p['id'] || 0;
       });
@@ -67,26 +65,14 @@ export class RealestateFormComponent implements OnInit {
     if(this.realestate.id) {
       this.realestateService.update(this.realestate).subscribe(
         x => {
-          this.toastyService.success({
-            title: 'Success',
-            msg: 'The realEstate was successfully updated.',
-            theme: 'bootstrap',
-            showClose: true, 
-            timeout: 5000
-          });
+          console.log("The realEstate was successfully updated.");
         }
       );
     } else {
       this.realestateService.create(this.realestate).subscribe(
           res => this.setRealEstate(res as SaveRealEstate),
           err => {
-            this.toastyService.error({
-              title: 'Error',
-              msg: 'An unexpected error happened.',
-              theme: 'bootstrap',
-              showClose: true, 
-              timeout: 5000
-            });
+            console.log("An unexpected error happened."); 
           });
     }
 

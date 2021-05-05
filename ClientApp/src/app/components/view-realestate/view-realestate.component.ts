@@ -1,9 +1,9 @@
 import { PhotoService } from './../../services/photo.service';
 import { RealEstateService } from './../../services/realestate.service';
-import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-view-realestate',
@@ -22,7 +22,6 @@ export class ViewRealestateComponent implements OnInit {
     private router: Router,
     private photoService: PhotoService,
     private route: ActivatedRoute,
-    private toasty: ToastyService,
     private realEstateService: RealEstateService) {
       route.params.subscribe(p => {
         this.realEstateId = +p['id'];
@@ -69,13 +68,7 @@ export class ViewRealestateComponent implements OnInit {
         this.photos.push(photo);
       },
       err => {
-        this.toasty.error({
-          title: 'Error',
-          msg: err.error,
-          theme: 'bootstrap',
-          showClose: true,
-          timeout: 5000
-        });
+        console.log(err.error)
       });
   }
 
