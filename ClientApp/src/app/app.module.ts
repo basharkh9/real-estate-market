@@ -17,6 +17,9 @@ import { RealEstateService } from './services/realestate.service';
 import { RealestateListComponent } from './components/realestate-list/realestate-list.component';
 import { ViewRealestateComponent } from './components/view-realestate/view-realestate.component';
 
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,12 @@ import { ViewRealestateComponent } from './components/view-realestate/view-reale
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: 'furniture-store.eu.auth0.com',
+      clientId: 'k09Nd723RLExPBtHlya1UBJOGA6gtDES',
+      cacheLocation: 'localstorage'
+    }),
     HttpClientModule,
     FormsModule,
     ToastyModule.forRoot(),

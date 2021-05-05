@@ -17,18 +17,23 @@
                   </a>
               </li>
               <li [routerLinkActive]="['link-active']">
-                  <a [routerLink]="['/realestates/new']">
+                  <a [routerLink]="['/realestates/new']" *ngIf="isLoggedIn">
                       <span class='glyphicon glyphicon-plus'></span> New Realestate
                   </a>
               </li>
-              <li [routerLinkActive]="['link-active']">
-                  <a [routerLink]="['/counter']">
+              <!-- <li [routerLinkActive]="['link-active']">
+                  <button (click)="login()">
                       <span class='glyphicon glyphicon-education'></span> Counter
+                  </button>
+              </li> -->
+              <li [routerLinkActive]="['link-active']">
+                  <a (click)="auth.loginWithRedirect()"  *ngIf="!isLoggedIn">
+                      <span class='glyphicon glyphicon-user'></span>Login
                   </a>
               </li>
               <li [routerLinkActive]="['link-active']">
-                  <a [routerLink]="['/fetch-data']">
-                      <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                  <a (click)="auth.logout()"  *ngIf="isLoggedIn">
+                      <span class='glyphicon glyphicon-user'></span>Logout
                   </a>
               </li>
           </ul>

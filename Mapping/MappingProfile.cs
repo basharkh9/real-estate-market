@@ -9,6 +9,7 @@ namespace real_estate_market.Mapping
         public MappingProfile()
         {
             // Domain to API Resource
+            CreateMap<Feedback, FeedbackResource>();
             CreateMap<Photo, PhotoResource>();
             CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<Cladding, CladdingResource>();
@@ -16,6 +17,7 @@ namespace real_estate_market.Mapping
             CreateMap<RealEstate, RealEstateResource>();
 
             // API Resource to Domain
+            CreateMap<FeedbackResource, Feedback>();
             CreateMap<RealEstateQueryResource, RealEstateQuery>();
             CreateMap<SaveRealEstateResource, RealEstate>()
                 .ForMember(r => r.Id, opt => opt.Ignore());

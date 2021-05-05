@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspnetCore.Authentication.JwtBearer" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

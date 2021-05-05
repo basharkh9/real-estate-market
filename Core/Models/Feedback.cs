@@ -11,7 +11,5 @@ namespace real_estate_market.Core.Models
         public string Desc { get; set; }
         [Required]
         public float Rate { get; set; }
-        public User User { get; set; }
-        public int UserId { get; set; }
     }
 }
