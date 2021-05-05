@@ -3,6 +3,7 @@ import { RealEstateService } from './../../services/realestate.service';
 import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-view-realestate',
@@ -14,8 +15,10 @@ export class ViewRealestateComponent implements OnInit {
   realEstate: any;
   realEstateId: number;
   photos: any[];
+  isLoggedIn: boolean = false;
 
   constructor(
+    public auth: AuthService,
     private router: Router,
     private photoService: PhotoService,
     private route: ActivatedRoute,
@@ -31,6 +34,8 @@ export class ViewRealestateComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.auth.isAuthenticated$.subscribe(r => {this.isLoggedIn = r;});
+      
     this.photoService.getPhotos(this.realEstateId) 
       .subscribe(photos => this.photos = photos as any[]);
 

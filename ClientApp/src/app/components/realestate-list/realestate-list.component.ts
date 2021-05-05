@@ -1,5 +1,6 @@
 import { RealEstateService } from 'src/app/services/realestate.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-realestate-list',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./realestate-list.component.css']
 })
 export class RealestateListComponent implements OnInit {
-  private readonly PAGE_SIZE = 3;
+  isLoggedIn: boolean = false;
+  private readonly PAGE_SIZE = 4;
   queryResult: any = {};
   cladding: any = {};
   query: any = {
@@ -25,9 +27,10 @@ export class RealestateListComponent implements OnInit {
   claddings: any[];
   filter: any = {};
 
-  constructor(private realEstateService: RealEstateService) { }
+  constructor(public auth: AuthService,private realEstateService: RealEstateService) { }
 
   ngOnInit(): void {
+    this.auth.isAuthenticated$.subscribe(r => {this.isLoggedIn = r;});
     this.realEstateService.getCladdings().subscribe(claddings => {
       this.claddings = claddings as any []; 
     });

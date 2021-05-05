@@ -5,8 +5,7 @@ export interface KeyValuePair {
 
 export interface RealEstate {
   id: number; 
-  model: KeyValuePair;
-  make: KeyValuePair; 
+  
 }
 
 export interface SaveRealEstate {
@@ -14,8 +13,8 @@ export interface SaveRealEstate {
   claddingId: number;
   area: number;
   level: number;
-  numberofroom: number;
+  numberOfRooms: number;
   price: number;
   address: string;
-
+  isBooked: boolean;
 }

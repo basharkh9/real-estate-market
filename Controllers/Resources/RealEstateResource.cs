@@ -9,6 +9,7 @@ namespace real_estate_market.Controllers.Resources
         public int Id { get; set; }
         public float Area { get; set; }
         public int Level { get; set; }
+        public bool IsBooked { get; set; }
         public int NumberOfRooms { get; set; }
         public string Address { get; set; }
         public CladdingResource Cladding { get; set; }

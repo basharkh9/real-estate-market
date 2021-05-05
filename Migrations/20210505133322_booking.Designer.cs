@@ -10,8 +10,8 @@ using real_estate_market.Persistence;
 namespace real_estate_market.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20210505122828_AddFeedback")]
-    partial class AddFeedback
+    [Migration("20210505133322_booking")]
+    partial class booking
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,7 +67,7 @@ namespace real_estate_market.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Desc")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -131,6 +131,9 @@ namespace real_estate_market.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
+
+                    b.Property<bool>("isBooked")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

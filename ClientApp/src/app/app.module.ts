@@ -19,6 +19,8 @@ import { ViewRealestateComponent } from './components/view-realestate/view-reale
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
+import { FeedbackService } from './services/feedback.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AuthModule } from '@auth0/auth0-angular';
     PaginationComponent,
     RealestateFormComponent,
     RealestateListComponent,
-    ViewRealestateComponent
+    ViewRealestateComponent,
+    FeedbackListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,6 +50,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       { path: '', redirectTo: '/realestates', pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'feedbacks', component: FeedbackListComponent },
       { path: 'realestates/new', component: RealestateFormComponent },
       { path: 'realestates/edit/:id', component: RealestateFormComponent },
       { path: 'realestates/:id', component: ViewRealestateComponent },
@@ -55,7 +59,8 @@ import { AuthModule } from '@auth0/auth0-angular';
   ],
   providers: [
     RealEstateService,
-    PhotoService
+    PhotoService,
+    FeedbackService
   ],
   bootstrap: [AppComponent]
 })

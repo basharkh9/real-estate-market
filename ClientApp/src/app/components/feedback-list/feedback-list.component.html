@@ -1,0 +1,12 @@
+<div class="well">
+    <div *ngFor="let f of feedbacks" class="panel panel-default">
+        <div class="panel-body">
+            <p>
+                Review : {{ f.description}}
+            </p>
+        </div>
+        <div class="panel-footer">
+            <p>Rating : {{ f.rate }}</p>
+        </div>
+      </div>
+</div>
