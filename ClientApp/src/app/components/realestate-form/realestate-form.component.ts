@@ -17,8 +17,9 @@ export class RealestateFormComponent implements OnInit {
     claddingId: 0,
     area: 0,
     level: 0,
-    numberofroom: 0,
+    numberOfRooms: 0,
     price: 0,
+    isBooked: false,
     address: '',
   };
 
@@ -52,6 +53,9 @@ export class RealestateFormComponent implements OnInit {
     this.realestate.address = r.address;
     this.realestate.claddingId = r.claddingId;
     this.realestate.price = r.price;
+    this.realestate.area = r.area;
+    this.realestate.numberOfRooms = r.numberOfRooms;
+    this.realestate.isBooked = r.isBooked;
   }
 
   onCladdingChange() {

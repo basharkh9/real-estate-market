@@ -10,6 +10,11 @@ namespace real_estate_market.Migrations
                 name: "FK_Feedbacks_Users_UserId",
                 table: "Feedbacks");
 
+            migrationBuilder.RenameColumn(
+                name: "Desc",
+                table: "Feedbacks",
+                newName: "Description");
+
             migrationBuilder.AlterColumn<int>(
                 name: "UserId",
                 table: "Feedbacks",
@@ -32,6 +37,11 @@ namespace real_estate_market.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Feedbacks_Users_UserId",
                 table: "Feedbacks");
+
+            migrationBuilder.RenameColumn(
+                name: "Description",
+                table: "Feedbacks",
+                newName: "Desc");
 
             migrationBuilder.AlterColumn<int>(
                 name: "UserId",

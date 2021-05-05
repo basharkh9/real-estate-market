@@ -1,6 +1,6 @@
 <h2>RealEstates</h2>
     <p>
-        <a [routerLink]="['/realestates/new']" class="btn btn-primary" >New Real Estate</a>
+        <a *ngIf="isLoggedIn"  [routerLink]="['/realestates/new']" class="btn btn-primary" >New Real Estate</a>
     </p>
     
     <div class="well">

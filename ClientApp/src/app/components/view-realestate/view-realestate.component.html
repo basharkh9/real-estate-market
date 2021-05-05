@@ -13,13 +13,17 @@
     <div role="tabpanel" class="tab-pane active" id="basic">
       <h2>Basics</h2>
       <ul>
-        <li>cladding: {{ realEstate.claddingId }}</li>
-        <li>level: {{ realEstate.level }}</li>
+        <li>Level: {{ realEstate.level }}</li>
+        <li>Area: {{ realEstate.area }}</li>
+        <li>Number Of Room: {{ realEstate.numberOfRooms }}</li>
+        <li>Price: {{ realEstate.price }}</li>
+        <li>Address: {{ realEstate.address }}</li>
+        <li>Is Booked: {{ realEstate.isBooked }}</li>
       </ul>
       <br/>
       <p>
-        <a class="btn btn-primary" [routerLink]="['/realestates/edit/', realEstate.id]">Edit</a>
-        <button class="btn btn-danger" (click)="delete()">Delete</button>
+        <a *ngIf="isLoggedIn" class="btn btn-primary" [routerLink]="['/realestates/edit/', realEstate.id]">Edit</a>
+        <button class="btn btn-danger" *ngIf="isLoggedIn" (click)="delete()">Delete</button>
         <a class="btn btn-default" [routerLink]="['/realestates']">View All RealEstate</a>
       </p>
     </div>

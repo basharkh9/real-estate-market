@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -44,6 +45,7 @@ namespace real_estate_market.Controllers
                 return BadRequest(ModelState);
 
             var realEstate = await repository.GetRealEstate(id);
+            Console.WriteLine(realEstate.IsBooked);
 
             if (realEstate == null)
                 return NotFound();

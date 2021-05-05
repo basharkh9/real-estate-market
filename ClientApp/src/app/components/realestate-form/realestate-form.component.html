@@ -25,11 +25,20 @@
   </div>
   <div class="form-group">
     <label for="numberofrooms">Number of Rooms</label>
-    <input [(ngModel)]="realestate.numberofroom" name="numberofroom" id="numberofrooms" type="number" class="form-control">
+    <input [(ngModel)]="realestate.numberOfRooms" name="numberofrooms" id="numberofrooms" type="number" class="form-control">
   </div>
   <div class="form-group">
     <label for="price">Price</label>
     <input [(ngModel)]="realestate.price" name="price" id="price" type="number" class="form-control">
+  </div>
+  <div>
+    <p>Is this realestate booked?</p>
+    <label for="booked" class="radio-inline">
+      <input type="radio" name="isBooked" id="booked" [value]="true" [(ngModel)]="realestate.isBooked"> Yes
+    </label>
+    <label for="notBooked" class="radio-inline">
+      <input type="radio" name="isBooked" id="notBooked" [value]="false" [(ngModel)]="realestate.isBooked"> No
+    </label>
   </div>
   <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
   <button *ngIf="realestate.id" class="btn btn-danger" type="button" (click)="delete()">Delete</button>

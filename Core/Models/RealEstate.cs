@@ -12,6 +12,7 @@ namespace real_estate_market.Core.Models
         public float Area { get; set; }
         [Required]
         public int Level { get; set; }
+        public bool IsBooked { get; set; }
         public int NumberOfRooms { get; set; }
         [Required]
         public string Address { get; set; }

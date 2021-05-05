@@ -8,7 +8,7 @@ namespace real_estate_market.Core.Models
     {
         public int Id { get; set; }
         [Required]
-        public string Desc { get; set; }
+        public string Description { get; set; }
         [Required]
         public float Rate { get; set; }
     }

@@ -38,6 +38,7 @@ namespace real_estate_market.Persistence
             var result = new QueryResult<RealEstate>();
             var query = context.RealEstates
                 .Include(r => r.Cladding)
+                .Where(r => r.IsBooked == false)
                 .AsQueryable();
 
             if (queryObj.CladdingId.HasValue)
