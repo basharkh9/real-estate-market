@@ -32,7 +32,7 @@
                   </button>
               </li> -->
               <li [routerLinkActive]="['link-active']">
-                  <a (click)="auth.loginWithPopup()"  *ngIf="!isLoggedIn">
+                  <a (click)="auth.loginWithRedirect()"  *ngIf="!isLoggedIn">
                       <span class='glyphicon glyphicon-user'></span>Login
                   </a>
               </li>
