@@ -53,7 +53,7 @@ export class ViewRealestateComponent implements OnInit {
 
   delete() {
     if(confirm('Are you sure?')) {
-      this.realEstateService.delete(this.realEstate.Id)
+      this.realEstateService.delete(this.realEstateId)
         .subscribe(x => {
           this.router.navigate(['/realestates']);
         });
